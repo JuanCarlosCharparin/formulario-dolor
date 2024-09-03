@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\FormularioController;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,3 +30,11 @@ Route::middleware('auth')->group(function () {
 });
 
 require __DIR__.'/auth.php';
+
+
+Route::get('/formularios', [FormularioController::class, 'index'])->name('formulario.index');
+
+Route::get('/formularios/create', [FormularioController::class, 'create'])->name('formulario.create');
+Route::post('/formularios', [FormularioController::class, 'store'])->name('formulario.store');
+
+Route::get('/pacientes/search', [FormularioController::class, 'searchPatient'])->name('formulario.searchPatient');
