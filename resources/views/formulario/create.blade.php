@@ -9,6 +9,18 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg p-6">
 
+                <style>
+                    .area {
+                        position: absolute;
+                        border: 2px solid transparent;
+                        background-color: rgba(255, 0, 0, 0.3);
+                        cursor: pointer;
+                    }
+                    .selected {
+                        border-color: red;
+                    }
+                </style>
+
                 <form method="POST" action="{{ route('formulario.store') }}" class="space-y-4">
                     @csrf
 
@@ -147,6 +159,101 @@
                             <div class="invalid-feedback">{{ $message }}</div>
                         @enderror
                     </div>
+                    <p></p>
+                    <hr>
+
+
+                    
+
+                    <div style="position: relative; width: 700px;">
+                        <img src="{{ asset('img/cuerpo-humano.jpg') }}" style="width: 100%;">
+                        <!-- Cabeza Frente -->
+                        <div class="area" style="top: 8px; left: 485px; width: 25px; height: 25px;" data-zone="cabeza-frente-derecha" onclick="selectArea(event, 'cabeza-frente-derecha')"></div>
+                        <div class="area" style="top: 8px; left: 450px; width: 25px; height: 25px;" data-zone="cabeza-frente-izquierda" onclick="selectArea(event, 'cabeza-frente-izquierda')"></div>
+                        <div class="area" style="top: 42px; left: 444px; width: 25px; height: 25px;" data-zone="pomulo-frente-derecho" onclick="selectArea(event, 'pomulo-frente-derecho')"></div>
+                        <div class="area" style="top: 42px; left: 490px; width: 25px; height: 25px;" data-zone="pomulo-frente-izquierdo" onclick="selectArea(event, 'pomulo-frente-izquierdo')"></div>
+
+                        <!-- Cabeza Trasero -->
+                        <div class="area" style="top: 8px; left: 275px; width: 25px; height: 25px;" data-zone="cabeza-trasero-derecha" onclick="selectArea(event, 'cabeza-trasero-derecha')"></div>
+                        <div class="area" style="top: 8px; left: 240px; width: 25px; height: 25px;" data-zone="cabeza-trasero-izquierda" onclick="selectArea(event, 'cabeza-trasero-izquierda')"></div>
+
+                        <!-- Hombro Frente -->
+                        <div class="area" style="top: 70px; left: 515px; width: 25px; height: 25px;" data-zone="hombro-frente-derecho" onclick="selectArea(event, 'hombro-frente-derecho')"></div>
+                        <div class="area" style="top: 70px; left: 420px; width: 25px; height: 25px;" data-zone="hombro-frente-izquierdo" onclick="selectArea(event, 'hombro-frente-izquierdo')"></div>
+
+                        <!-- Hombro Trasero -->
+                        <div class="area" style="top: 68px; left: 305px; width: 25px; height: 25px;" data-zone="hombro-trasero-derecho" onclick="selectArea(event, 'hombro-trasero-derecho')"></div>
+                        <div class="area" style="top: 68px; left: 210px; width: 25px; height: 25px;" data-zone="hombro-trasero-izquierdo" onclick="selectArea(event, 'hombro-trasero-izquierdo')"></div>
+
+                        <!-- Trapecio Trasero -->
+                        <div class="area" style="top: 60px; left: 275px; width: 25px; height: 25px;" data-zone="trapecio-trasero-derecho" onclick="selectArea(event, 'trapecio-trasero-derecho')"></div>
+                        <div class="area" style="top: 60px; left: 240px; width: 25px; height: 25px;" data-zone="trapecio-trasero-izquierdo" onclick="selectArea(event, 'trapecio-trasero-izquierdo')"></div>
+
+                        <!-- Espalda -->
+                        <div class="area" style="top: 120px; left: 275px; width: 25px; height: 25px;" data-zone="espalda-derecha" onclick="selectArea(event, 'espalda-derecha')"></div>
+                        <div class="area" style="top: 120px; left: 240px; width: 25px; height: 25px;" data-zone="espalda-izquierda" onclick="selectArea(event, 'espalda-izquierda')"></div>
+
+                        <!-- Pectoral -->
+                        <div class="area" style="top: 100px; left: 490px; width: 25px; height: 25px;" data-zone="pectoral-derecho" onclick="selectArea(event, 'pectoral-derecho')"></div>
+                        <div class="area" style="top: 100px; left: 447px; width: 25px; height: 25px;" data-zone="pectoral-izquierdo" onclick="selectArea(event, 'pectoral-izquierdo')"></div>
+
+                        <!-- Abdominal -->
+                        <div class="area" style="top: 160px; left: 485px; width: 25px; height: 25px;" data-zone="abdominal-derecha" onclick="selectArea(event, 'abdominal-derecha')"></div>
+                        <div class="area" style="top: 160px; left: 450px; width: 25px; height: 25px;" data-zone="abdominal-izquierda" onclick="selectArea(event, 'abdominal-izquierda')"></div>
+
+                        <!-- Codo Frente -->
+                        <div class="area" style="top: 140px; left: 515px; width: 25px; height: 25px;" data-zone="codo-frente-derecho" onclick="selectArea(event, 'codo-frente-derecho')"></div>
+                        <div class="area" style="top: 140px; left: 410px; width: 25px; height: 25px;" data-zone="codo-frente-izquierdo" onclick="selectArea(event, 'codo-frente-izquierdo')"></div>
+
+                        <!-- Codo Trasero -->
+                        <div class="area" style="top: 140px; left: 315px; width: 25px; height: 25px;" data-zone="codo-trasero-derecho" onclick="selectArea(event, 'codo-trasero-derecho')"></div>
+                        <div class="area" style="top: 140px; left: 205px; width: 25px; height: 25px;" data-zone="codo-trasero-izquierdo" onclick="selectArea(event, 'codo-trasero-izquierdo')"></div>
+                        
+                        <!-- Lumbar -->
+                        <div class="area" style="top: 160px; left: 275px; width: 25px; height: 25px;" data-zone="lumbar-derecha" onclick="selectArea(event, 'lumbar-derecha')"></div>
+                        <div class="area" style="top: 160px; left: 240px; width: 25px; height: 25px;" data-zone="lumbar-izquierda" onclick="selectArea(event, 'lumbar-izquierda')"></div>
+
+                        <!-- Gluteo -->
+                        <div class="area" style="top: 200px; left: 280px; width: 25px; height: 25px;" data-zone="gluteo-derecho" onclick="selectArea(event, 'gluteo-derecho')"></div>
+                        <div class="area" style="top: 200px; left: 240px; width: 25px; height: 25px;" data-zone="gluteo-izquierdo" onclick="selectArea(event, 'gluteo-izquierdo')"></div>
+
+                        <!-- Ingle -->
+                        <div class="area" style="top: 205px; left: 485px; width: 25px; height: 25px;" data-zone="ingle-derecha" onclick="selectArea(event, 'ingle-derecha')"></div>
+                        <div class="area" style="top: 205px; left: 445px; width: 25px; height: 25px;" data-zone="ingle-izquierdo" onclick="selectArea(event, 'ingle-izquierda')"></div>
+
+                        <!-- Muñeca Trasera -->
+                        <div class="area" style="top: 200px; left: 330px; width: 25px; height: 25px;" data-zone="muñeca-trasera-derecha" onclick="selectArea(event, 'muñeca-trasera-derecha')"></div>
+                        <div class="area" style="top: 200px; left: 195px; width: 25px; height: 25px;" data-zone="muñeca-trasera-izquierda" onclick="selectArea(event, 'muñeca-trasera-izquierda')"></div>
+
+                        <!-- Muñeca Frente -->
+                        <div class="area" style="top: 200px; left: 525px; width: 25px; height: 25px;" data-zone="muñeca-frente-derecha" onclick="selectArea(event, 'muñeca-frente-derecha')"></div>
+                        <div class="area" style="top: 200px; left: 395px; width: 25px; height: 25px;" data-zone="muñeca-frente-izquierdo" onclick="selectArea(event, 'muñeca-frente-izquierda')"></div>
+
+                        <!-- Posterior -->
+                        <div class="area" style="top: 255px; left: 280px; width: 25px; height: 25px;" data-zone="posterior-derecho" onclick="selectArea(event, 'posterior-derecho')"></div>
+                        <div class="area" style="top: 255px; left: 240px; width: 25px; height: 25px;" data-zone="posterior-izquierdo" onclick="selectArea(event, 'posterior-izquierdo')"></div>
+
+                        <!-- Rodilla -->
+                        <div class="area" style="top: 310px; left: 485px; width: 25px; height: 25px;" data-zone="rodilla-derecha" onclick="selectArea(event, 'rodilla-derecha')"></div>
+                        <div class="area" style="top: 310px; left: 445px; width: 25px; height: 25px;" data-zone="rodilla-izquierda" onclick="selectArea(event, 'rodilla-izquierda')"></div>
+
+                        <!-- Gemelo -->
+                        <div class="area" style="top: 350px; left: 280px; width: 25px; height: 25px;" data-zone="gemelo-derecho" onclick="selectArea(event, 'gemelo-derecho')"></div>
+                        <div class="area" style="top: 350px; left: 235px; width: 25px; height: 25px;" data-zone="gemelo-izquierdo" onclick="selectArea(event, 'gemelo-izquierdo')"></div>
+
+                        <!-- Tobillo Trasero -->
+                        <div class="area" style="top: 415px; left: 270px; width: 25px; height: 25px;" data-zone="tobillo-trasero-derecho" onclick="selectArea(event, 'tobillo-trasero-derecho')"></div>
+                        <div class="area" style="top: 415px; left: 240px; width: 25px; height: 25px;" data-zone="tobillo-trasero-izquierdo" onclick="selectArea(event, 'tobillo-trasero-izquierdo')"></div>
+
+                        <!-- Tobillo Frente -->
+                        <div class="area" style="top: 405px; left: 485px; width: 25px; height: 25px;" data-zone="tobillo-trasero-derecho" onclick="selectArea(event, 'tobillo-trasero-derecho')"></div>
+                        <div class="area" style="top: 405px; left: 450px; width: 25px; height: 25px;" data-zone="tobillo-trasero-izquierdo" onclick="selectArea(event, 'tobillo-trasero-izquierdo')"></div>
+                    </div>
+                    
+
+
+                    <!-- Campo oculto para enviar las zonas seleccionadas al controlador -->
+                    <input type="hidden" name="zonas_seleccionadas" id="zonas_seleccionadas">
 
                     <!-- Botón de Crear -->
                     <button type="submit" class="btn btn-primary">Crear</button>
@@ -215,5 +322,21 @@
                 $('#paciente_salutte_id').val(selectedId);
             });
         });
+
+        let selectedAreas = [];
+
+        function selectArea(event, area) {
+            event.preventDefault();
+            const element = event.target;
+            const index = selectedAreas.indexOf(area);
+            if (index > -1) {
+                selectedAreas.splice(index, 1);
+                element.classList.remove('selected');
+            } else {
+                selectedAreas.push(area);
+                element.classList.add('selected');
+            }
+            document.getElementById('selected_areas').value = selectedAreas.join(',');
+        }
     </script>
 </x-app-layout>
