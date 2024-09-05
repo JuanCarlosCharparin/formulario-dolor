@@ -340,7 +340,7 @@
         function selectArea(event, area) {
             event.preventDefault();
             const element = event.target;
-            const index = selectedAreas.indexOf(area);
+            const index = selectedAreas.findIndex(item => item.area === area);
 
             if (index > -1) {
                 // Eliminar el área del arreglo
@@ -349,8 +349,8 @@
                 // Eliminar las opciones de Interno, Externo, Ambos correspondientes a esta zona
                 document.getElementById(`${area}-options`).remove();
             } else {
-                // Agregar el área al arreglo
-                selectedAreas.push(area);
+                // Agregar el área al arreglo con opción vacía
+                selectedAreas.push({ area: area, option: "" });
                 element.classList.add('selected');
                 // Crear y agregar las opciones de Interno, Externo, Ambos
                 createOptions(area);
@@ -365,14 +365,26 @@
             optionsContainer.id = `${area}-options`;
             optionsContainer.className = 'zone-options';
 
+            // Crear radio buttons para seleccionar Interno, Externo, Ambos
             optionsContainer.innerHTML = `
                 <label>${area} - Selecciona opción:</label><br>
-                <input type="radio" name="${area}-option" value="interno"> Interno<br>
-                <input type="radio" name="${area}-option" value="externo"> Externo<br>
-                <input type="radio" name="${area}-option" value="ambos"> Ambos<br>
+                <input type="radio" name="${area}-option" value="interno" onchange="updateOption('${area}', 'interno')"> Interno<br>
+                <input type="radio" name="${area}-option" value="externo" onchange="updateOption('${area}', 'externo')"> Externo<br>
+                <input type="radio" name="${area}-option" value="ambos" onchange="updateOption('${area}', 'ambos')"> Ambos<br>
             `;
 
             document.getElementById('options-container').appendChild(optionsContainer);
+        }
+
+        function updateOption(area, option) {
+            // Encontrar el área en el arreglo y actualizar su opción seleccionada
+            const index = selectedAreas.findIndex(item => item.area === area);
+            if (index > -1) {
+                selectedAreas[index].option = option;
+            }
+
+            // Imprimir el arreglo actualizado en la consola
+            console.log(selectedAreas);
         }
 
         function submitForm() {

@@ -81,7 +81,7 @@ class FormularioController extends Controller {
         
         //Traer zonas de la vista 
         $selectedAreas = json_decode($request->input('selectedAreas'), true);
-
+        /*dd($selectedAreas);*/
         //Borrar anteriores registros con el mismo id
         Localizacion::where('formulario_id', $newFormId)->delete();
 
@@ -92,7 +92,8 @@ class FormularioController extends Controller {
         foreach ($selectedAreas as $area) {
             Localizacion::create([
                 'formulario_id' => $newFormId,
-                'zona' => $area, 
+                'zona' => $area['area'], 
+                'localizacion' => $area['option'],
             ]);
         }
         return redirect()->route('formulario.index')->with('success', 'Formulario creado exitosamente.');

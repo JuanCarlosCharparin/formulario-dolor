@@ -88,7 +88,7 @@
                                     <td class="px-6 py-4 whitespace-nowrap">{{ $formulario->tipoDolor->nombre ?? 'N/A' }}</td>
                                     <td class="px-6 py-4 whitespace-nowrap">
                                         @foreach($formulario->localizaciones as $localizacion)
-                                            <div>{{ $localizacion->zona }}: {{ $localizacion->localizacion }}</div>
+                                            <div>{{ $localizacion->zona }} - {{ $localizacion->localizacion }}</div>
                                         @endforeach
                                     </td>
                                 </tr>
