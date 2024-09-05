@@ -56,7 +56,6 @@
                                 <th>Inicio</th>
                                 <th>Duración</th>
                                 <th>Puntuación ECN</th>
-                                <th>Descripción</th>
                                 <th>Intensidad</th>
                                 <th>Dolor</th>
                                 <th>Tipo Dolor</th>
@@ -84,7 +83,6 @@
                                     <td class="px-6 py-4 whitespace-nowrap">{{ $formulario->inicio }}</td>
                                     <td class="px-6 py-4 whitespace-nowrap">{{ $formulario->duracion }}</td>
                                     <td class="px-6 py-4 whitespace-nowrap">{{ $formulario->puntuacion_ecn }}</td>
-                                    <td class="px-6 py-4 whitespace-nowrap">{{ $formulario->descripcion }}</td>
                                     <td class="px-6 py-4 whitespace-nowrap">{{ $formulario->intensidad->nombre ?? 'N/A' }}</td>
                                     <td class="px-6 py-4 whitespace-nowrap">{{ $formulario->dolor->nombre ?? 'N/A' }}</td>
                                     <td class="px-6 py-4 whitespace-nowrap">{{ $formulario->tipoDolor->nombre ?? 'N/A' }}</td>

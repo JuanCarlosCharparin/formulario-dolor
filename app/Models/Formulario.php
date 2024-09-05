@@ -10,6 +10,7 @@ class Formulario extends Model
     protected $table = 'formulario';
 
     protected $fillable = [
+        'id',
         'paciente_salutte_id',
         'fecha_carga',
         'derivado_por',

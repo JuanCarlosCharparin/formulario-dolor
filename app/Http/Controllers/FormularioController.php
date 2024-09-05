@@ -71,13 +71,30 @@ class FormularioController extends Controller {
             'dolor_id' => 'required|exists:dolor,id',
             'tipo_dolor_id' => 'required|exists:tipo_dolor,id',
             'descripcion' => 'nullable|string',
-            /*'localizaciones' => 'array',
-            'localizaciones.*' => 'exists:localizaciones,id'*/
         ]);
 
-        $formulario = Formulario::create($request->all());
-        /*$formulario->localizaciones()->sync($request->input('localizaciones', []));*/
+        //Obtener el id del ultimo formulario en la db 
+        $lastForm = Formulario::latest('id')->first();
+        
+        //Sumarle 1
+        $newFormId = $lastForm ? $lastForm->id + 1 : 1;
+        
+        //Traer zonas de la vista 
+        $selectedAreas = json_decode($request->input('selectedAreas'), true);
 
+        //Borrar anteriores registros con el mismo id
+        Localizacion::where('formulario_id', $newFormId)->delete();
+
+        //Crear el formulario con las validaciones
+        $formulario = Formulario::create($request->all());
+
+        //Iterar las areas cargadas en la vista y crear las localizaciones
+        foreach ($selectedAreas as $area) {
+            Localizacion::create([
+                'formulario_id' => $newFormId,
+                'zona' => $area, 
+            ]);
+        }
         return redirect()->route('formulario.index')->with('success', 'Formulario creado exitosamente.');
     }
 
