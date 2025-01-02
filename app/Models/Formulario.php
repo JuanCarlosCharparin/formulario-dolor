@@ -15,7 +15,6 @@ class Formulario extends Model
         'fecha_carga',
         'derivado_por',
         'inicio',
-        'duracion',
         'factores_atenuantes',
         'factores_agravantes',
         'puntuacion_ecn',

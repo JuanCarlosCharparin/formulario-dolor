@@ -61,8 +61,6 @@ class FormularioController extends Controller {
             'fecha_carga' => 'required|date',
             'derivado_por' => 'required|string',
             'inicio' => 'nullable|string',
-            'duracion' => 'nullable|string',
-            'inicio' => 'required|string',
             'factores_atenuantes' => 'nullable|string',
             'factores_agravantes' => 'nullable|string',
             'puntuacion_ecn' => 'nullable|numeric',

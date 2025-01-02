@@ -4,3 +4,7 @@
 @tailwind components;
 @tailwind utilities;
 
+#layoutSidenav_content {
+    padding: 10px;
+}
+

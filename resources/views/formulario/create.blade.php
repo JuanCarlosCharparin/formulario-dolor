@@ -105,15 +105,6 @@
                         @enderror
                     </div>
 
-                    <!-- Campo de Duración -->
-                    <div class="mb-4">
-                        <label for="duracion" class="form-label">Duración</label>
-                        <input type="text" id="duracion" name="duracion" class="form-input rounded-md shadow-sm @error('duracion') is-invalid @enderror" value="{{ old('duracion') }}" placeholder="Ingrese la duración">
-                        @error('duracion')
-                            <div class="invalid-feedback">{{ $message }}</div>
-                        @enderror
-                    </div>
-
                     <!-- Campo de Inicio -->
                     <div class="mb-4">
                         <label for="inicio" class="form-label">Inicio: </label>

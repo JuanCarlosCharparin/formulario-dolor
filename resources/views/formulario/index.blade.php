@@ -6,7 +6,7 @@
     </x-slot>
 
     <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+        <div class="w-full px-4">
             <!-- Container for the form and table -->
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg p-6">
                 <!-- Formulario de búsqueda -->
@@ -54,7 +54,6 @@
                                 <th>Fecha Carga</th>
                                 <th>Derivado Por</th>
                                 <th>Inicio</th>
-                                <th>Duración</th>
                                 <th>Puntuación ECN</th>
                                 <th>Intensidad</th>
                                 <th>Dolor</th>
@@ -68,8 +67,8 @@
                                     // Obtener el paciente correspondiente usando el ID del formulario
                                     $paciente = $pacientesMap->get($formulario->paciente_salutte_id);
                                 @endphp
-
-                                <tr class="bg-white dark:bg-gray-800">
+                        
+                                <tr class="bg-white dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700">
                                     <td class="px-6 py-4 whitespace-nowrap">{{ $formulario->id }}</td>
                                     <td class="px-6 py-4 whitespace-nowrap">
                                         @if ($paciente)
@@ -81,7 +80,6 @@
                                     <td class="px-6 py-4 whitespace-nowrap">{{ $formulario->fecha_carga }}</td>
                                     <td class="px-6 py-4 whitespace-nowrap">{{ $formulario->derivado_por }}</td>
                                     <td class="px-6 py-4 whitespace-nowrap">{{ $formulario->inicio }}</td>
-                                    <td class="px-6 py-4 whitespace-nowrap">{{ $formulario->duracion }}</td>
                                     <td class="px-6 py-4 whitespace-nowrap">{{ $formulario->puntuacion_ecn }}</td>
                                     <td class="px-6 py-4 whitespace-nowrap">{{ $formulario->intensidad->nombre ?? 'N/A' }}</td>
                                     <td class="px-6 py-4 whitespace-nowrap">{{ $formulario->dolor->nombre ?? 'N/A' }}</td>
